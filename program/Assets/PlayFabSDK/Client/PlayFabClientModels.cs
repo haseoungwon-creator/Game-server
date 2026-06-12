@@ -1627,6 +1627,7 @@ namespace PlayFab.ClientModels
         /// PlayFab Username for the account to find (if no PlayFabId is specified).
         /// </summary>
         public string Username;
+        public string AccountInfo;
     }
 
     /// <summary>
