@@ -5,13 +5,12 @@ using PlayFab.ClientModels;
 using TMPro;
 using System.Collections;
 
-public class PlayFapManager : MonoBehaviourPunCallbacks
+public class PlayFapManager : MonoBehaviourPunCallbacks 
 {
     [SerializeField] string version;
 
     [SerializeField] TMP_InputField addressInputField;
     [SerializeField] TMP_InputField passwordInputField;
-
     
     public void Request()
     {
@@ -44,6 +43,7 @@ public class PlayFapManager : MonoBehaviourPunCallbacks
 
     private IEnumerator ConnectRoutine()
     {
+        Singleton.Instance.Call();
         //Master Server로 연결하는 함수
         PhotonNetwork.ConnectUsingSettings();
         
@@ -62,5 +62,6 @@ public class PlayFapManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Lobby");
     }
+    
 }
 
