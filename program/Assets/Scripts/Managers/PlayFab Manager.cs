@@ -1,34 +1,43 @@
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 using PlayFab;
 using PlayFab.ClientModels;
-using TMPro;
 using System.Collections;
 
-public class PlayFapManager : MonoBehaviourPunCallbacks 
+public class PlayfabManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] string version;
 
     [SerializeField] TMP_InputField addressInputField;
     [SerializeField] TMP_InputField passwordInputField;
-    
+
     public void Request()
     {
-        var requst = new LoginWithEmailAddressRequest { Email = addressInputField.text, Password = passwordInputField.text };
+        var request = new LoginWithEmailAddressRequest
+        {
+            Email = addressInputField.text,
+            Password = passwordInputField.text
+        };
 
-        PlayFabClientAPI.LoginWithEmailAddress(requst,Success,Failed );
-    
+        PlayFabClientAPI.LoginWithEmailAddress(request, Success, Failed);
     }
 
     public void Success(LoginResult loginResult)
     {
-
         PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(), Success, Failed);
-        PhotonNetwork.AutomaticallySyncScene = false;
 
-        PhotonNetwork.GameVersion = version;
+        PhotonNetwork.AutomaticallySyncScene = false; // 방장을 따라가지 않음
 
-        StartCoroutine(ConnectRoutine());
+        PhotonNetwork.GameVersion = version; // 버전 맞추기
+
+        PhotonNetwork.ConnectUsingSettings(); // Master Server로 연결하는 함수
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        // 특정 로비를 생성하여 진입하는 함수
+        PhotonNetwork.JoinLobby();
     }
 
     public void Success(GetAccountInfoResult getAccountInfoRequest)
@@ -41,27 +50,8 @@ public class PlayFapManager : MonoBehaviourPunCallbacks
         Debug.Log(playFabError.GenerateErrorReport());
     }
 
-    private IEnumerator ConnectRoutine()
-    {
-
-        //Master Server로 연결하는 함수
-        PhotonNetwork.ConnectUsingSettings();
-        
-        //서버 연결이 완료되거나 시간이 초과될 때까지 대기합니다.
-        while (!PhotonNetwork.IsConnectedAndReady)
-        {
-            yield return null;
-        }
-
-        //특정로비를 생성하여 집입
-        PhotonNetwork.JoinLobby();
-
-    }
-
     public override void OnJoinedLobby()
     {
         PhotonNetwork.LoadLevel("Lobby");
     }
-    
 }
-
