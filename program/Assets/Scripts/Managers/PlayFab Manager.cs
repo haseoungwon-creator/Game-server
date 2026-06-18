@@ -12,8 +12,10 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField addressInputField;
     [SerializeField] TMP_InputField passwordInputField;
 
+    
     public void Request()
     {
+        PlayFabSettings.staticSettings.TitleId = "25B6A";
         var request = new LoginWithEmailAddressRequest
         {
             Email = addressInputField.text,
@@ -47,7 +49,7 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void Failed(PlayFabError playFabError)
     {
-        Debug.Log(playFabError.GenerateErrorReport());
+        PanelManager.Instance.Open(Panel.Error, playFabError.GenerateErrorReport());
     }
 
     public override void OnJoinedLobby()

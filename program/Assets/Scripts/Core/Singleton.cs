@@ -20,19 +20,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     instance = clone.AddComponent<T>();
                 }
             }
-                
-
-
             return instance; 
         } 
     }
 
-    
-    private void Awake()
+ private void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 }
