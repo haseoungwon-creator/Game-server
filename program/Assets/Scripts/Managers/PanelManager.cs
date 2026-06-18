@@ -14,7 +14,7 @@ public class PanelManager :Singleton<PanelManager>
         {
             clone = (GameObject)Instantiate(Resources.Load(panel.ToString()));
 
-            clone.name = clone.name.Replace("(clone)", "");
+            clone.name = clone.name.Replace("(Clone)", "");
 
             dictionary.Add(panel, clone);
 
@@ -26,8 +26,9 @@ public class PanelManager :Singleton<PanelManager>
 
             clone.SetActive(true);
 
-            clone.GetComponent<ErrorPanel>().SetMessage(message);
+            
         }
+        clone.GetComponent<ErrorPanel>().SetMessage(message);
     }
 
  
