@@ -36,6 +36,10 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings(); // Master Server로 연결하는 함수
     }
 
+    public void open()
+    {
+        PanelManager.Instance.Open(Panel.Subscribe);
+    }
     public override void OnConnectedToMaster()
     {
         // 특정 로비를 생성하여 진입하는 함수
@@ -46,6 +50,8 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.NickName = getAccountInfoRequest.AccountInfo?.Username;
     }
+
+    
 
     public void Failed(PlayFabError playFabError)
     {
