@@ -1,30 +1,30 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour 
 {
     private static T instance;
 
     public static T Instance 
-    { get 
+    {
+        get
         {
-            
             if (instance == null)
             {
                 instance = (T)FindAnyObjectByType(typeof(T));
 
-                if (instance == null)
+                if(instance == null)
                 {
                     GameObject clone = new GameObject(typeof(T).Name);
 
                     instance = clone.AddComponent<T>();
                 }
             }
-            return instance; 
-        } 
+
+            return instance;
+        }
     }
 
- private void Awake()
+    private void Awake()
     {
         if (instance != null)
         {

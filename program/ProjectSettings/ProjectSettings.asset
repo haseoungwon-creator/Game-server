@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 99d73873a001d7e4f8bdc097efcb096c
+  productGUID: c25160676d1fcde45b7f1dbeec63be32
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: program
+  productName: Program
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -865,14 +865,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: program
+  metroPackageName: Program
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: program
+  metroApplicationDescription: Program
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -943,11 +943,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: d3a5ce12-f08c-44b0-a32b-62ef18dbc958
+  cloudProjectId: d9da8d0c-6bd7-4827-aeac-1ba1897fb380
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: program 2026-06-08_21-09-41
-  organizationId: dum_bo_08
+  projectName: Program 2026-06-08_21-09-45
+  organizationId: kileab
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
